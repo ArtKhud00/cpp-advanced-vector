@@ -546,21 +546,21 @@ void Test6() {
         assert(Obj::num_move_assigned == SIZE - 3);
         assert(Obj::num_assigned == 0);
     }
-    //{
-    //    Obj::ResetCounters();
-    //    Vector<Obj> v{SIZE};
-    //    v[2].id = ID;
-    //    auto* pos = v.Erase(v.cbegin() + 1);
-    //    assert((pos - v.begin()) == 1);
-    //    assert(v.Size() == SIZE - 1);
-    //    assert(v.Capacity() == SIZE);
-    //    assert(pos->id == ID);
-    //    assert(Obj::num_copied == 0);
-    //    assert(Obj::num_assigned == 0);
-    //    assert(Obj::num_move_assigned == SIZE - 2);
-    //    assert(Obj::num_moved == 0);
-    //    assert(Obj::GetAliveObjectCount() == SIZE - 1);
-    //}
+    {
+        Obj::ResetCounters();
+        Vector<Obj> v{SIZE};
+        v[2].id = ID;
+        auto* pos = v.Erase(v.cbegin() + 1);
+        assert((pos - v.begin()) == 1);
+        assert(v.Size() == SIZE - 1);
+        assert(v.Capacity() == SIZE);
+        assert(pos->id == ID);
+        assert(Obj::num_copied == 0);
+        assert(Obj::num_assigned == 0);
+        assert(Obj::num_move_assigned == SIZE - 2);
+        assert(Obj::num_moved == 0);
+        assert(Obj::GetAliveObjectCount() == SIZE - 1);
+    }
 }
 
 struct C {
